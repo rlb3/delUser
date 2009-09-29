@@ -16,11 +16,15 @@
     NSManagedObjectModel *managedObjectModel;
     NSManagedObjectContext *managedObjectContext;
 
+    IBOutlet NSArrayController *hostArrayController;
     IBOutlet NSArrayController *credArrayController;
     IBOutlet NSTextField *status;
     IBOutlet NSButton *fetchButton;
     IBOutlet NSButton *deleteButton;
     IBOutlet NSTableView *accountsTable;
+
+    NSManagedObject *currentHost;
+    NSManagedObject *currentCred;
 }
 
 @property (nonatomic, retain) IBOutlet NSWindow *window;

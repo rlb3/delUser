@@ -13,8 +13,8 @@
 @synthesize window;
 
 - (void)fetch:(id)sender {
-    id cred = [[credArrayController selectedObjects] lastObject];
-    [status setStringValue:[cred key]];
+    currentHost = [[hostArrayController selectedObjects] lastObject];
+    currentCred = [[credArrayController selectedObjects] lastObject];
 }
 
 - (void)delete:(id)sender {
