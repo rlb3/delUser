@@ -22,9 +22,11 @@
     IBOutlet NSButton *fetchButton;
     IBOutlet NSButton *deleteButton;
     IBOutlet NSTableView *accountsTable;
+    IBOutlet NSProgressIndicator *progress;
 
     NSManagedObject *currentHost;
     NSManagedObject *currentCred;
+    NSString *protocal;
 }
 
 @property (nonatomic, retain) IBOutlet NSWindow *window;
