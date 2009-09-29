@@ -15,6 +15,12 @@
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSManagedObjectModel *managedObjectModel;
     NSManagedObjectContext *managedObjectContext;
+
+    IBOutlet NSArrayController *credArrayController;
+    IBOutlet NSTextField *status;
+    IBOutlet NSButton *fetchButton;
+    IBOutlet NSButton *deleteButton;
+    IBOutlet NSTableView *accountsTable;
 }
 
 @property (nonatomic, retain) IBOutlet NSWindow *window;
@@ -24,5 +30,7 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)saveAction:sender;
+- (IBAction)fetch:(id)sender;
+- (IBAction)delete:(id)sender;
 
 @end
