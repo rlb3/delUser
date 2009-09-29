@@ -12,6 +12,15 @@
 
 @synthesize window;
 
+- (void)fetch:(id)sender {
+    id cred = [[credArrayController selectedObjects] lastObject];
+    [status setStringValue:[cred key]];
+}
+
+- (void)delete:(id)sender {
+    
+}
+
 /**
     Returns the support directory for the application, used to store the Core Data
     store file.  This code uses a directory named "delUser" for
