@@ -15,10 +15,41 @@
 - (void)fetch:(id)sender {
     currentHost = [[hostArrayController selectedObjects] lastObject];
     currentCred = [[credArrayController selectedObjects] lastObject];
+
+    if ([currentHost secure]) {
+        protocal = @"https";
+    }
+    else {
+        protocal = @"http";
+    }
+
+    NSString *urlString = [NSString stringWithFormat:@"%@://%@:%@/xml-api/listaccts", protocal, [currentHost name], [currentHost port]];
+    [status setStringValue:urlString];
+
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSString *remoteAuth            = [NSString stringWithFormat:@"WHM %@:%@", [currentCred username], [currentCred key]];
+
+    [urlRequest addValue:remoteAuth forHTTPHeaderField:@"Authorization"];
+
+    NSError *error;
+    NSURLResponse *response;
+    NSData *urlData = [NSURLConnection sendSynchronousRequest:urlRequest
+                                    returningResponse:&response
+                                                error:&error];
+    NSLog(@"%@", [[NSString alloc ] initWithData:urlData encoding:NSUTF8StringEncoding]);
+
 }
 
 - (void)delete:(id)sender {
     
+}
+
+-(int)numberOfRowsInTableView:(NSTableView*)tableView {
+	return 5;
+}
+
+-(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row {
+	return [NSArray array];
 }
 
 /**
