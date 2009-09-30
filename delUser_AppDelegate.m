@@ -74,7 +74,49 @@
 }
 
 - (void)delete:(id)sender {
+    [progress startAnimation:nil];
+
+    NSInteger row = [accountsTable selectedRow];
+    if (row < 0) {
+        [progress stopAnimation:nil];
+        return;
+    }
+
+    NSError *error;
+    NSArray *node = [[accounts objectAtIndex:row] nodesForXPath:@"user" error:&error];
     
+    if (!node) {
+        [progress stopAnimation:nil];
+		NSAlert *alert = [NSAlert alertWithError:error];
+		[alert runModal];
+		return;
+	}
+
+    NSString *user = [[node objectAtIndex:0] stringValue];
+
+    NSString *urlString = [NSString stringWithFormat:@"%@://%@:%@/xml-api/removeacct?user=%@&keepdns=0", protocal, [currentHost name], [currentHost port], user];
+
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSString *remoteAuth            = [NSString stringWithFormat:@"WHM %@:%@", [currentCred username], [currentCred key]];
+
+    [urlRequest addValue:remoteAuth forHTTPHeaderField:@"Authorization"];
+
+    NSURLResponse *response;
+    NSData *urlData = [NSURLConnection sendSynchronousRequest:urlRequest
+                                            returningResponse:&response
+                                                        error:&error];
+    if (urlData) {
+        NSString *statusString = [NSString stringWithFormat:@"User '%@' deleted", user];
+        [status setStringValue:statusString];
+    }
+    else {
+        [progress stopAnimation:nil];
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+    }
+
+    [self fetch:self];
+
 }
 
 -(NSString *)stringForPath:(NSString *)xpath ofNode:(NSXMLNode *)node {
