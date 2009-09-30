@@ -16,7 +16,9 @@
     currentHost = [[hostArrayController selectedObjects] lastObject];
     currentCred = [[credArrayController selectedObjects] lastObject];
 
-    if ([currentHost secure]) {
+    [progress startAnimation:nil];
+
+    if ([[currentHost secure] intValue]) {
         protocal = @"https";
     }
     else {
@@ -36,21 +38,71 @@
     NSData *urlData = [NSURLConnection sendSynchronousRequest:urlRequest
                                     returningResponse:&response
                                                 error:&error];
-    NSLog(@"%@", [[NSString alloc ] initWithData:urlData encoding:NSUTF8StringEncoding]);
 
+    if (!urlData) {
+        [progress stopAnimation:nil];
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+        return;
+    }
+
+
+    NSXMLDocument *xml = [[NSXMLDocument alloc] initWithData:urlData
+                                                     options:0
+                                                       error:&error];
+
+    if (!xml) {
+        [progress stopAnimation:nil];
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+        return;
+    }
+
+    accounts = [xml nodesForXPath:@"/listaccts/acct" error:&error];
+
+    if (!accounts) {
+        [progress stopAnimation:nil];
+		NSAlert *alert = [NSAlert alertWithError:error];
+		[alert runModal];
+		return;
+	}
+
+    [accountsTable reloadData];
+    [deleteButton setEnabled:YES];
+    [fetchButton setTitle:@"Refresh"];
+    [progress stopAnimation:nil];
 }
 
 - (void)delete:(id)sender {
     
 }
 
+-(NSString *)stringForPath:(NSString *)xpath ofNode:(NSXMLNode *)node {
+	NSError *error;
+	NSArray *nodes = [node nodesForXPath:xpath error:&error];
+	if (!nodes) {
+        [progress stopAnimation:nil];
+		NSAlert *alert = [NSAlert alertWithError:error];
+		[alert runModal];
+		return nil;
+	}
+	if ([nodes count] == 0) {
+		return nil;
+	} else {
+		return [[nodes objectAtIndex:0] stringValue];
+	}
+}
+
 -(int)numberOfRowsInTableView:(NSTableView*)tableView {
-	return 5;
+	return [accounts count];
 }
 
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row {
-	return [NSArray array];
+    NSXMLNode *node = [accounts objectAtIndex:row];
+	NSString *xPath = [tableColumn identifier];
+	return [self stringForPath:xPath ofNode:node];
 }
+
 
 /**
     Returns the support directory for the application, used to store the Core Data

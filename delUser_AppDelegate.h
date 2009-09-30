@@ -27,6 +27,7 @@
     NSManagedObject *currentHost;
     NSManagedObject *currentCred;
     NSString *protocal;
+    NSArray *accounts;
 }
 
 @property (nonatomic, retain) IBOutlet NSWindow *window;
