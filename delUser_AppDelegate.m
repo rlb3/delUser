@@ -26,7 +26,6 @@
     }
 
     NSString *urlString = [NSString stringWithFormat:@"%@://%@:%@/xml-api/listaccts", protocal, [currentHost name], [currentHost port]];
-    [status setStringValue:urlString];
 
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     NSString *remoteAuth            = [NSString stringWithFormat:@"WHM %@:%@", [currentCred username], [currentCred key]];
@@ -71,6 +70,7 @@
     [deleteButton setEnabled:YES];
     [fetchButton setTitle:@"Refresh"];
     [progress stopAnimation:nil];
+    [status setStringValue:@"Users loaded"];
 }
 
 - (void)delete:(id)sender {
