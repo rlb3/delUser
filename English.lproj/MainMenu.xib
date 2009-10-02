@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="21"/>
 			<integer value="29"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -42,7 +42,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSWindowTemplate" id="483958638">
-				<int key="NSWindowStyleMask">15</int>
+				<int key="NSWindowStyleMask">263</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{6, 569}, {1042, 384}}</string>
 				<int key="NSWTFlags">1886912512</int>
@@ -537,7 +537,7 @@
 						<object class="NSButton" id="192633288">
 							<reference key="NSNextResponder" ref="823886803"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{49, 196}, {25, 25}}</string>
+							<string key="NSFrame">{{44, 196}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="823886803"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="921041188">
@@ -577,7 +577,7 @@
 						<object class="NSButton" id="198656649">
 							<reference key="NSNextResponder" ref="823886803"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{49, 20}, {25, 25}}</string>
+							<string key="NSFrame">{{44, 20}, {25, 25}}</string>
 							<reference key="NSSuperview" ref="823886803"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="921924837">
@@ -2908,16 +2908,16 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="627724049"/>
 							<reference ref="114043621"/>
-							<reference ref="192633288"/>
 							<reference ref="477907265"/>
 							<reference ref="28536810"/>
-							<reference ref="198656649"/>
 							<reference ref="820356338"/>
 							<reference ref="60177498"/>
 							<reference ref="664909834"/>
 							<reference ref="779770403"/>
 							<reference ref="291845336"/>
 							<reference ref="448296262"/>
+							<reference ref="192633288"/>
+							<reference ref="198656649"/>
 						</object>
 						<reference key="parent" ref="483958638"/>
 					</object>
@@ -4338,6 +4338,7 @@
 					<string>553.IBPluginDependency</string>
 					<string>554.IBPluginDependency</string>
 					<string>555.IBPluginDependency</string>
+					<string>556.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
 					<string>56.ImportedFromIB2</string>
 					<string>57.IBEditorWindowLastContentRect</string>
@@ -4362,6 +4363,8 @@
 					<string>586.IBPluginDependency</string>
 					<string>587.IBPluginDependency</string>
 					<string>588.IBPluginDependency</string>
+					<string>589.IBPluginDependency</string>
+					<string>590.IBPluginDependency</string>
 					<string>599.IBPluginDependency</string>
 					<string>602.IBPluginDependency</string>
 					<string>605.IBNumberFormatterBehaviorMetadataKey</string>
@@ -4569,6 +4572,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{85, 781}, {245, 183}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4583,6 +4587,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
