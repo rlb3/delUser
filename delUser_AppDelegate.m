@@ -101,7 +101,7 @@
 
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                          timeoutInterval:10];
+                                                          timeoutInterval:30];
     NSString *remoteAuth            = [NSString stringWithFormat:@"WHM %@:%@", [currentCred username], [currentCred key]];
 
     [urlRequest addValue:remoteAuth forHTTPHeaderField:@"Authorization"];
