@@ -99,7 +99,9 @@
 
     NSString *urlString = [NSString stringWithFormat:@"%@://%@:%@/xml-api/removeacct?user=%@&keepdns=0", protocal, [currentHost name], [currentHost port], user];
 
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                          timeoutInterval:10];
     NSString *remoteAuth            = [NSString stringWithFormat:@"WHM %@:%@", [currentCred username], [currentCred key]];
 
     [urlRequest addValue:remoteAuth forHTTPHeaderField:@"Authorization"];
