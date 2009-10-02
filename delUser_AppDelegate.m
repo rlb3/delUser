@@ -27,7 +27,10 @@
 
     NSString *urlString = [NSString stringWithFormat:@"%@://%@:%@/xml-api/listaccts", protocal, [currentHost name], [currentHost port]];
 
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                          timeoutInterval:10];
+
     NSString *remoteAuth            = [NSString stringWithFormat:@"WHM %@:%@", [currentCred username], [currentCred key]];
 
     [urlRequest addValue:remoteAuth forHTTPHeaderField:@"Authorization"];
